@@ -1,0 +1,43 @@
+<section id="generate-api-key">
+  <h2>Generate Api Keys</h2>
+  <br>
+  <p>Api keys allow you to access mysampleapp's public api.   In order to call the API, you will need to whitelist the hostname of the origin you will be calling from.</p>
+  <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+  <div class="alert alert-success" *ngIf="message">{{message}}</div>
+  <div class="row col-12 form">
+    <div *ngIf="apiKeys" class="row col-12">
+      <div class="row col-12 form-group">
+        <label>Client Id:</label>
+        <input type="text" [ngModel]="apiKeys.client_id" class="form-control" disabled>
+      </div>
+      <div class="row col-12 form-group">
+        <label>Client Secret:</label>
+        <input type="text" [ngModel]="apiKeys.client_secret" class="form-control" disabled>
+      </div>
+      <br>
+      <p class="row col-12" *ngIf="!apiKeys">Select the button to generate Api Keys. They should be treated like a username and password.</p>
+    </div>
+    <br>
+    <div class="row col-12">
+      <button class="btn btn-primary" (click)="generate()">{{buttonText}}</button>
+      <br />
+    </div>
+    <div class="clearfix row col-12 mt-3"></div>
+    <br />
+    <br />
+    <div class="row col-12" *ngIf="apiKeys">
+      <div class="row col-12 form-group">
+        <label>Allowed Origins</label>
+        <br />
+        <tag-input separatorKeys="[',', ' ']" [errorMessages]="errorMessages" [validators]="validators" secondaryPlaceholder="Add Allowed Origins"
+          placeholder="Insert new Allowed Origin" [(ngModel)]="allowedOrigins" class="col-12"></tag-input>
+
+        <p class="help-block text-muted">Origin must start with http:// or https://</p>
+      </div>
+      <div class="row col-12 form-group">
+        <button class="btn btn-primary" (click)="saveAllowedOrgins()" [disabled]="!allowedOrigins">Save</button>
+      </div>
+    </div>
+  </div>
+  <br>
+</section>

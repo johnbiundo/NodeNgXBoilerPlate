@@ -1,0 +1,9 @@
+@import "variables";
+@import "mixins";
+.text-emerald {
+  color: theme-color("emerald");
+}
+
+.text-azul {
+  color: theme-color("azul");
+}

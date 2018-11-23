@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://www.mysampleapp.com">
+      <img src="../../../assets//images/logo.png" /> &nbsp; My Sample App
+    </a>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" *ngIf="!isAuthenticated">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+      </ul>
+    </div>
+    <ul *ngIf="isAuthenticated" class="navbar-nav navbar-right topnav-right-menu">
+      <li class="nav-item pr-3 border-right">
+        <a class="nav-link text-azul" routerLink="/home">
+          <span class="fa fa-home fa-2x"></span>
+        </a>
+      </li>
+      <li class="nav-item pl-1" ngbDropdown>
+        <button class="btn btn-outline-azul btn-circle btn-md" id="ddprofile" ngbDropdownToggle>{{user?.profile.initials}}</button>
+        <div ngbDropdownMenu aria-labelledby="ddprofilemenu">
+          <button class="dropdown-item" *ngIf="user?.isAdmin" (click)="gotoAdmin()">Admin</button>
+          <button class="dropdown-item" (click)="gotoProfile()">Profile</button>
+          <button class="dropdown-item" (click)="logout()">Logout</button>
+        </div>
+      </li>
+      <li>&nbsp;</li>
+    </ul>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>

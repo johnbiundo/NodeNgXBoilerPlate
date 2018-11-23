@@ -1,0 +1,1 @@
+ngrok tls 4200 -subdomain=mysampleappv2

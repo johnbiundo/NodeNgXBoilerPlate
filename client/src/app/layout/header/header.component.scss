@@ -1,0 +1,16 @@
+@import '../../../assets/scss/variables.scss';
+.dropdown-toggle::after {
+  display: none;
+}
+
+.topnav-right-menu {
+  margin-right: 45px;
+  li {
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+}
+
+img {
+  height: 50px;
+}

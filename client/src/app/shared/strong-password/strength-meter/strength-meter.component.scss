@@ -1,0 +1,41 @@
+.meter
+{
+  height: 8px;
+  margin: 2px 0;
+  display: flex;
+}
+
+.meter .section
+{
+  flex: 1;
+  margin-right: 5px;
+  transition: background-color 1s linear;
+}
+.meter .section:last-child
+{
+  margin-right: 0;
+}
+.meter.level-0 .section:first-child
+{
+  background-color: #a94442;
+}
+.meter.level-1 .section:nth-child(-n+2)
+{
+  background-color: #FF5722;
+
+}
+.meter.level-2 .section:nth-child(-n+3)
+{
+  background-color: #FFC107;
+
+}
+.meter.level-3 .section:nth-child(-n+4)
+{
+  background-color: #D4E157;
+
+}
+.meter.level-4 .section:nth-child(-n+5)
+{
+  background-color: #4CAF50
+
+}

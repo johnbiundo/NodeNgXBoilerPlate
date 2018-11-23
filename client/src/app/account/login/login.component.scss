@@ -1,0 +1,26 @@
+@import '../../../assets/scss/variables';
+#left {
+  margin-top: 75px;
+  padding-left: 15px;
+}
+
+#right {
+  height: 100vh;
+  background-image: url('../../../assets/images/vbg2.jpg');
+  background-size: cover;
+  background-position: center;
+  color: $emerald;
+  border-left-style: inset;
+  border-color: #ccc;
+  border-width: 1px;
+}
+
+.list-inline {
+  @media screen and (max-width: 800px) {
+    display: block;
+    align-content: center;
+    width: 100%
+  }
+}
+
+

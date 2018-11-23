@@ -1,0 +1,86 @@
+<section id="admin-users">
+  <div class="row col-auto">
+    <h1>Users</h1>
+    <br>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-4">
+      <p class="small text-muted">Showing records {{records}} out of {{collection}} in the collection.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form class="form-inline row">
+        <div class="form-group col-sm-1">
+          <span class="float-right">
+          <i class="fa fa-filter text-grey"></i>
+          </span>
+        </div>
+        <div class="form-group col-sm-5">
+
+          <input class=" form-control w-100" id="textfilter" placeholder="Filter results" [(ngModel)]="filter.text" name="textfilter"
+          />
+        </div>
+        <div class="form-check col-sm-1 ml-4">
+          <input class="form-check-input" type="checkbox" id="filtermarketing" [(ngModel)]="filter.marketing" name="filtermarketing"
+          />
+          <label class="form-check-label" for="defaultCheck1"> Marketing? </label>
+        </div>
+        <div class="form-check  col-sm-1 ml-4">
+          <input class="form-check-input" type="checkbox" id="confirmedfilter" [(ngModel)]="filter.confirmed" name="confirmedfilter"
+          />
+          <label class="form-check-label" for="defaultCheck1"> Confirmed? </label>
+        </div>
+        <div class="form-group  col-sm-1">
+          <button class="btn btn-primary" (click)="search()">Search</button>
+        </div>
+        <div class="form-group  col-sm-1">
+          <button class="btn btn-primary" (click)="export()">Export</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div class="row col-12">
+    <table class="table scroll-container h-100" infiniteScroll [infiniteScrollDistance]=".3" [infiniteScrollDisabled]="disableScroll"
+      [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
+      <tr>
+        <th></th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Marketing?</th>
+        <th>Create Date</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>
+          <span ngbTooltip="View Details " class="clickable fa fa-eye text-primary " (click)="gotoPage(user) "></span>
+        </td>
+        <td class="small ">{{user.profile.email}}
+          <span *ngIf="user.isAdmin " ngbTooltip="Admin " class="fa fa-cog text-muted "></span>
+
+          <span *ngIf="!user.status.confirmed " ngbTooltip="Account is unconfirmed " class="fa fa-check text-danger "></span>
+        </td>
+        <td class="small ">{{user.profile.fullName}}</td>
+        <td class="small ">
+          <span *ngIf="user.status.optInEmail " ngbTooltip="Accepts marketing emails " class="fa fa-check text-success "></span>
+          <span *ngIf="!user.status.optInEmail " ngbTooltip="Does not accept marketing emails " class="fa fa-check text-danger "></span>
+        </td>
+
+        <td class="small ">{{user.metadata.createdAt | date}}</td>
+
+        <td>
+          <div ngbDropdown class="d-inline-block ">
+            <button class="btn btn-outline-primary " id="ddlActions " ngbDropdownToggle>
+              Actions
+            </button>
+            <div ngbDropdownMenu aria-labelledby="ddlActions ">
+              <button class="dropdown-item " (click)="dispatch(action, user) " *ngFor="let action of user.$adminActions ">{{action.text}}</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>

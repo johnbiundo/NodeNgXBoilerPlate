@@ -1,0 +1,9 @@
+<div class="body-wrapper">
+  <app-header *ngIf="!hideHeader">
+  </app-header>
+  <div [ngClass]="{'container-fluid body-content' : !hideHeader, 'body-no-header' : hideHeader}">
+    <router-outlet class="d-block"></router-outlet>
+  </div>
+</div>
+<div class="clearfix"></div>
+<app-footer id="footer-wrapper"></app-footer>

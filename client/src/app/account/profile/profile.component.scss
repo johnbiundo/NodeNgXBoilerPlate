@@ -1,0 +1,9 @@
+@media (min-width: 768px) {
+  .sticky {
+    position: sticky;
+    top: 0;
+    display: block;
+    min-height: 100%;
+    width: 100%;
+  }
+}

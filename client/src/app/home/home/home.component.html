@@ -1,0 +1,59 @@
+<section class="container-fluid" id="home">
+  <div class="row">
+    <div class="col-12 ">
+      <h1 class="display-3 text-emerald">Welcome, {{user?.profile?.firstName}}!</h1>
+      <p>Be sure to check out the help center if you need some assistance getting started.</p>
+    </div>
+  </div>
+  <div class="clearfix mb-5"></div>
+  <div class="row">
+    <div class="col-12 ">
+
+    </div>
+  </div>
+  <br>
+  <div class="clearfix"></div>
+  <div class="row">
+    <div class="col-2">
+      <h1 class="display-5 text-emerald">My Account</h1>
+      <hr>
+      <ul class="ml-2 list-unstyled">
+        <li>{{user?.profile?.email}} </li>
+      </ul>
+      <ul class="ml-2 list-unstyled">
+        <li>
+          <strong>
+            <em>Freemium Plan</em>
+          </strong>
+
+        </li>
+        <li>
+          <small>Renews on 5/31/2018</small>
+        </li>
+        <li>
+          <small>
+            You have 5 conversions remaining.</small>
+        </li>
+      </ul>
+      <br>
+    </div>
+    <div class="col-4 pr-5">
+      <h1 class="display-5 text-emerald">Recently Published</h1>
+      <hr>
+      <ul class="ml-2 list-inline">
+        <li>
+          <p>You don't have any published objects yet.</p>
+          <button class="btn btn-sm btn-emerald">Get Started</button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <h1 class="display-5 text-emerald">News</h1>
+      <hr>
+      <article class="news-item" *ngFor="let item of homeContent">
+        <h5 class="news-item-header">{{item.fields.title}}</h5>
+        <markdown class="news-item-body" [data]="item.fields.body"></markdown>
+      </article>
+    </div>
+  </div>
+</section>

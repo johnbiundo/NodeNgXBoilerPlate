@@ -1,0 +1,137 @@
+<section id="register">
+
+  <div class="row">
+    <div class="col-sm-12 col-md-7 order-md-1 order-sm-2" id="left">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1>Register</h1>
+            <br>
+            <div class="d-none d-sm-block d-md-none">
+              <p>Get started for free. No credit card required.</p>
+              <p> Already have an account?
+                <button class="d-inline align-self-center btn btn-primary" (click)="login()">Login</button>
+              </p>
+            </div>
+            <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+              <div formGroupName="profile">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>First Name:</label>
+                      <input type="text" class="form-control" required placeholder="" id="name" formControlName="firstName">
+                      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                        <div class="text-danger" *ngIf="firstName.errors.required">
+                          First Name is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Last Name:</label>
+                      <input type="text" class="form-control" required placeholder="" id="last" formControlName="lastName">
+                      <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                        <div class="text-danger" *ngIf="lastName.errors.required">
+                          Last Name is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Email:</label>
+                      <input type="email" class="form-control" required placeholder="" id="email" formControlName="email">
+                      <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div class="text-danger" *ngIf="email.errors.required">
+                          Email is required.
+                        </div>
+                        <div class="text-danger" *ngIf="email.errors.email && !email.errors.required">
+                          Please provide a valid email.
+                        </div>
+                        <div class="text-danger" *ngIf="email.errors.emailAvailable === false">
+                          An account with this email already exists
+                        </div>
+                      </div>
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Company:</label>
+                      <input type="text" class="form-control" required placeholder="" id="company" formControlName="company">
+                      <div *ngIf="company.invalid && (company.dirty || company.touched)">
+                        <div class="text-danger" *ngIf="company.errors.required">
+                          company Name is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Job Role:</label>
+                      <input type="text" class="form-control" placeholder="" id="jobrole" formControlName="jobRole">
+                      <small id="emailHelp" class="form-text text-muted">Optional.</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <app-password-input (passwordEv)="passwordEv($event)"></app-password-input>
+              <div formGroupName="status">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" placeholder="" id="optin" formControlName="optInEmail">
+                      <label class="form-check-label">I agree to let Knowledge Anywhere send me marketing related emails.</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-12">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <button [disabled]="registerForm.invalid" class="btn btn-primary" type="submit">Register</button>
+                    </li>
+                    <li class="list-inline-item">
+                      <button type="reset" (click)="gotoMain()" class="btn btn-primary">Cancel</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5  d-none d-md-block justify-content-center" id="right">
+      <div class="container">
+        <h2 class="text-center">Get started for free. No credit card required.</h2>
+        <h4 class="text-center mt-5"> Already have an account?
+          <button class="d-inline align-self-center btn btn-primary" (click)="login()">Login</button>
+        </h4>
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>

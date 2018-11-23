@@ -1,0 +1,101 @@
+<section id="profile" class="container" scrollSpyElement="profileElem">
+  <div class="alert alert-primary alert-dismissible" *ngIf="state === 'invalid'">Consider setting a password and completing your profile. Setting a password will allow you to login without using a third
+    party.
+  </div>
+  <div class="alert alert-primary alert-dismissible" *ngIf="state === 'partial'">Consider completing your profile.</div>
+  <br>
+  <div class="row">
+    <div class="col col-sm-12 col-md-3">
+      <br>
+      <br>
+      <div class="sticky-top">
+        <ul class="nav nav-pills flex-md-column" role="navigation" id="profile-menu" scroll-spy>
+          <li class="nav-item">
+            <a class="nav-link" href="#sec-profile-form">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#sec-change-password">Change Password</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#sec-gen-api-key">Api Keys</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#sec-accounts">Linked Accounts</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#sec-settings">Settings</a>
+          </li>
+        </ul>
+      </div>
+      <br>
+    </div>
+    <div class="col col-sm-12 col-lg-9">
+      <app-profile-form id="sec-profile-form"></app-profile-form>
+      <br>
+      <hr>
+      <br>
+      <h2 id="sec-change-password">Change Password</h2>
+      <br>
+      <app-password-input [label]="'New Password:'" [standalone]="true"></app-password-input>
+      <br>
+      <hr>
+      <br>
+      <app-generate-api-key id="sec-gen-api-key"></app-generate-api-key>
+      <br>
+      <hr>
+      <br>
+      <div id="sec-defaults">
+        <h2>Defaults</h2>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div id="sec-accounts">
+        <h2>Linked Accounts</h2>
+        <p>If you have previously linked an account for social sign in, you may unlink it.</p>
+        <div class="alert alert-danger" *ngIf="unlinkError">{{unlinkError}}</div>
+        <nav *ngIf="user.providers" class="nav btn-list">
+          <button class="ml-3 btn btn-social btn-linkedin" *ngIf="user.providers.linkedin" (click)="unlink('linkedin')">
+            <span class="fa fa-linkedin"></span>Unlink LinkedIn
+          </button>
+          <button class="ml-3 btn btn-social btn-google" *ngIf="user.providers.google" (click)="unlink('google')">
+
+            <span class="fa fa-google"></span>Unlink Google
+          </button>
+          <button class="ml-3 btn btn-social btn-github" *ngIf="user.providers.github" (click)="unlink('github')">
+
+            <span class="fa fa-github"></span>Unlink Github
+          </button>
+          <button class="ml-3 btn btn-social btn-facebook" *ngIf="user.providers.facebook" (click)="unlink('facebook')">
+
+            <span class="fa fa-facebook"></span>Unlink Facebook
+          </button>
+        </nav>
+
+      </div>
+
+
+      <br>
+      <hr>
+      <br>
+      <div id="sec-settings">
+        <h2>Settings &amp; Preferences</h2>
+        <br>
+        <div class="alert alert-danger" (click)="removeMeConfirm()" *ngIf="showRemoveMeConfirm">
+          <p>This will permanently delete your account and remove your Api Keys. Please confirm you wish to delete your account.</p>
+          <button class="btn btn-danger">Confirm</button>&nbsp;&nbsp;
+          <button class="btn btn-danger" (click)="removeMeCancel()">Cancel</button>
+        </div>
+        <ul class="nav">
+          <li>
+            <button class="btn btn-danger" (click)="removeMe()">Delete My Account</button>
+          </li>
+        </ul>
+        <br />
+
+      </div>
+    </div>
+  </div>
+  <br>
+</section>

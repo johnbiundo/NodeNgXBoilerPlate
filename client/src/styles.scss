@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,700|Work+Sans:400,700');
+@import "assets/scss/variables.scss";
+@import "assets/scss/buttons.scss";
+@import "assets/scss/typeography.scss";
+@import "assets/scss/form-components.scss";
+@import "assets/scss/loader.scss";
+@import "node_modules/bootstrap/scss/bootstrap";
+$fa-font-path: "../node_modules/font-awesome/fonts";
+html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body {
+  background-color: $body-background;
+  font-family: $font-body;
+  height: 100% !important;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-header;
+}
+
+input.ng-dirty, input.ng-touched {
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.75rem;
+}
+
+input.ng-dirty.ng-valid:not(.no-validate):not([type='password']) {
+  border-color: $validation-green;
+  background-image: url("data:image/svg+xml,%3Csvg width='45px' height='34px' viewBox='0 0 45 34' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate%28-56.000000, -59.000000%29' fill='%232EEC96'%3E%3Cpolygon points='70.1468531 85.8671329 97.013986 59 100.58042 62.5664336 70.1468531 93 56 78.8531469 59.5664336 75.2867133'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A") !important;
+}
+
+//:not(form):not(div)
+
+input.ng-dirty.ng-invalid:not(form):not(div), input.ng-touched.ng-invalid:not(form):not(div) {
+  border-color: $validation-red;
+    background-image: url("data:image/svg+xml,%3Csvg width='30px' height='30px' viewBox='0 0 30 30' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate%28-128.000000, -59.000000%29' fill='%23F44336'%3E%3Cpolygon points='157.848404 61.9920213 145.980053 73.8603723 157.848404 85.7287234 154.856383 88.7207447 142.988032 76.8523936 131.119681 88.7207447 128.12766 85.7287234 139.996011 73.8603723 128.12766 61.9920213 131.119681 59 142.988032 70.8683511 154.856383 59'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: $secondary !important;
+}
+
+a:active,
+a.active {
+  color: pink;
+}
+
+.btn-list {
+  button {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    width: 245px;
+    @media screen and (max-width: 800px) {
+      width: 80%;
+      display: block;
+    }
+  }
+  button:first-child {
+    margin-left: 15px;
+  }
+}

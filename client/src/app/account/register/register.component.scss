@@ -1,0 +1,19 @@
+@import '../../../assets/scss/variables';
+#left {
+  margin-top: 75px;
+  padding-left: 15px;
+  display: block;
+}
+
+#right {
+  padding-top: 100px;
+  height: 100vh;
+  display: block;
+  background-image: url('../../../assets/images/vbg4.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  border-left-style: inset;
+  border-color: #ccc;
+  border-width: 1px;
+}

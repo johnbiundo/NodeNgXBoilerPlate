@@ -1,0 +1,8 @@
+@import "variables";
+@mixin green-txt() {
+  color: $emerald;
+}
+
+@mixin blue-txt() {
+  color: $azul;
+}
